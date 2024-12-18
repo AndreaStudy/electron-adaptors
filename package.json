@@ -6,6 +6,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "build": "electron-builder",
     "package-mac": "npx electron-packager . --overwrite --platform=darwin --arch=arm64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
     "package-win": "npx electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Webview\"",
     "package-linux": "npx electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
@@ -20,6 +21,23 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^33.0.0",
+    "electron-builder": "^23.6.0",
     "electron-installer-dmg": "^4.0.0"
+  },
+  "build": {
+    "appId": "com.yourapp.id",
+    "productName": "Adaptors",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icons/win/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icons/mac/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icons/png/1024x1024.png"
+    }
   }
 }
